@@ -110,18 +110,3 @@ def process_huffman_encoding(text):
         **metrics,
         'successful_decode': text == decoded_text
     }
-
-
-# if __name__ == "__main__":
-#     # Get input from user
-#     text = input("Enter text to encode: ")
-    
-#     # Encode the text and get analysis
-#     encoded, codes = huffman_encode(text)
-    
-#     # Decode the text
-#     decoded = huffman_decode(encoded, codes)
-    
-#     # Verify decoding
-#     print(f"\nDecoded text: {decoded}")
-#     print(f"Successful decode: {text == decoded}")
