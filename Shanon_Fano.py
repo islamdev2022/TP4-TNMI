@@ -110,6 +110,7 @@ def process_shannon_fano(test_word):
     return {
         "coded_message": coded_message,
         "decoded_message": decoded_message,
+        "shanon-fano-codes": code_dict,
         "avg_code_length": round(avg_code_length, 2),
         "entropy": round(entropy, 2),
         "original_size": original_size,

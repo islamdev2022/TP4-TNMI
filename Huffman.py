@@ -36,16 +36,16 @@ def calculate_compression_metrics(text, huffman_codes, frequencies):
     compressed_size = sum(len(code) * freq * len(text) 
                           for (code), freq in zip(huffman_codes.items(), frequencies))
     table_size = sum(8 + len(code) for code in huffman_codes.values())
-    compression_ratio = original_size / compressed_size
-    compression_ratio_with_table = original_size / (compressed_size + table_size)
+    compression_rate = original_size / compressed_size
+    compression_rate_with_table = original_size / (compressed_size + table_size)
     avg_code_length = sum(len(code) * freq for (code), freq in zip(huffman_codes.items(), frequencies))
     
     return {
         'original_size': original_size,
         'compressed_size': compressed_size,
         'table_size': table_size,
-        'compression_ratio': compression_ratio,
-        'compression_ratio_with_table': compression_ratio_with_table,
+        'compression_rate': compression_rate,
+        'compression_rate_with_table': compression_rate_with_table,
         'avg_code_length': avg_code_length
     }
 
@@ -101,10 +101,8 @@ def process_huffman_encoding(text):
     decoded_text = huffman_decode(encoded_text, huffman_codes)
     
     return {
-        'chars': chars,
-        'freq': freq,
-        'encoded_text': encoded_text,
-        'decoded_text': decoded_text,
+        'coded_message': encoded_text,
+        'decoded_message': decoded_text,
         'huffman_codes': huffman_codes,
         'entropy': round(entropy, 2),
         **metrics,
