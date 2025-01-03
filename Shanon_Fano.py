@@ -103,19 +103,20 @@ def process_shannon_fano(test_word):
     original_size = total_length * 8  # ASCII uses 8 bits per character
     compressed_size = calculate_compressed_size(p, total_length)
     table_size = calculate_table_size(p)
-    compression_rate = (compressed_size / original_size) * 100
-    compression_rate_with_table = ((compressed_size + table_size) / original_size) * 100
+    compression_rate = original_size / compressed_size 
+    compression_rate_with_table = original_size / (compressed_size + table_size) 
 
     # Return all results as a dictionary
     return {
         "coded_message": coded_message,
         "decoded_message": decoded_message,
         "shanon-fano-codes": code_dict,
-        "avg_code_length": round(avg_code_length, 2),
         "entropy": round(entropy, 2),
+        "avg_code_length": round(avg_code_length, 2),
         "original_size": original_size,
         "compressed_size": round(compressed_size, 2),
-        "compression_rate": round(100 - compression_rate, 2),
-        "compression_rate_with_table": round(100 - compression_rate_with_table, 2),
+        "table_size": table_size,
+        "compression_rate": round(compression_rate, 2),
+        "compression_rate_with_table": round(compression_rate_with_table, 2),
         "successful_decode": test_word == decoded_message,
     }

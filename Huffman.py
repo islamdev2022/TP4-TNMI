@@ -41,12 +41,13 @@ def calculate_compression_metrics(text, huffman_codes, frequencies):
     avg_code_length = sum(len(code) * freq for (code), freq in zip(huffman_codes.items(), frequencies))
     
     return {
+        'avg_code_length': avg_code_length,
         'original_size': original_size,
         'compressed_size': compressed_size,
         'table_size': table_size,
         'compression_rate': compression_rate,
         'compression_rate_with_table': compression_rate_with_table,
-        'avg_code_length': avg_code_length
+        
     }
 
 # Function to build Huffman Tree
